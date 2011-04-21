@@ -34,4 +34,17 @@ namespace ZMQ {
 	}
 	
 	public static void version (out int major, out int minor, out int patch);
+
+	/* ZMQ error numbers, in addition to POSIX error numbers. */
+	[CCode (cname = "EFSM")]
+	public const int EFSM;
+	[CCode (cname = "ENOCOMPATPROTO")]
+	public const int ENOCOMPATPROTO;
+	[CCode (cname = "ETERM")]
+	public const int ETERM;
+	[CCode (cname = "EMTHREAD")]
+	public const int EMTHREAD;
+
+	public int errno ();
+	public unowned string strerror (int errnum);
 }
