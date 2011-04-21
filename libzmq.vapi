@@ -23,4 +23,15 @@
 
 [CCode (lower_case_cprefix = "zmq_", cheader_filename = "zmq.h")]
 namespace ZMQ {
+	[CCode (cprefix = "ZMQ_")]
+	namespace VERSION {
+		public const int MAJOR;
+		public const int MINOR;
+		public const int PATCH;
+
+		[CCode (cname = "ZMQ_VERSION")]
+		public const int VERSION;
+	}
+	
+	public static void version (out int major, out int minor, out int patch);
 }
