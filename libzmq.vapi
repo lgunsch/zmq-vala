@@ -1,4 +1,4 @@
-/* zmq.vala
+/* libzmq.vala
  *
  * Copyright (C) 2011  Lewis Gunsch <lgunsch@gmail.com>
  *
