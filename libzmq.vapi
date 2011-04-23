@@ -47,4 +47,29 @@ namespace ZMQ {
 
 	public int errno ();
 	public unowned string strerror (int errnum);
+
+	namespace MSG {
+		[CCode (cname = "ZMQ_MAX_VSM_SIZE")]
+		public const int MAX_VSM_SIZE;
+		[CCode (cname = "ZMQ_DELIMITER")]
+		public const int DELIMITER;
+		[CCode (cname = "ZMQ_VSM")]
+		public const int VSM;
+		public const uchar MORE;
+		public const uchar SHARED;
+
+		public delegate void free_fn(void* data, void* hint);
+
+		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
+		public struct Msg {
+			[CCode (cname = "zmq_msg_init")]
+			public Msg();
+			[CCode (cname = "zmq_msg_init_size")]
+			public Msg.size(size_t size);
+			[CCode (cname = "zmq_msg_init_data")]
+			public Msg.data(void *data, size_t size, free_fn *ffn, void *hint);
+		}
+
+		public int move(Msg dest, Msg src);
+	}
 }
