@@ -23,6 +23,13 @@
 
 [CCode (lower_case_cprefix = "zmq_", cheader_filename = "zmq.h")]
 namespace ZMQ {
+	[Compact]
+	[CCode (cprefix = "zmq_", cname = "void", free_function = "zmq_term")]
+	public class Context {
+		[CCode (cname = "zmq_init")]
+		public Context (int io_threads);
+	}
+
 	[CCode (cprefix = "ZMQ_")]
 	namespace VERSION {
 		public const int MAJOR;
