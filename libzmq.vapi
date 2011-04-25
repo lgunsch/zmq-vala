@@ -72,4 +72,49 @@ namespace ZMQ {
 
 		public int move(Msg dest, Msg src);
 	}
+
+	[CCode (cname = "int", cprefix = "ZMQ_")]
+	public enum SocketType {
+		PAIR,
+		PUB,
+		SUB,
+		REQ,
+		REP,
+		DEALER,
+		ROUTER,
+		PULL,
+		PUSH,
+		XPUB,
+		XSUB
+	}
+	
+	[CCode (cname = "int", cprefix = "ZMQ_")]
+	public enum SocketOption {
+		HWM,
+		SWAP,
+		AFFINITY,
+		IDENTITY,
+		SUBSCRIBE,
+		UNSUBSCRIBE,
+		RATE,
+		RECOVERY_IVL,
+		MCAST_LOOP,
+		SNDBUF,
+		RCVBUF,
+		RCVMORE,
+		FD,
+		EVENTS,
+		TYPE,
+		LINGER,
+		RECONNECT_IVL,
+		BACKLOG,
+		RECOVERY_IVL_MSEC,
+		RECONNECT_IVL_MAX
+	}
+
+	[CCode (cname = "int", cprefix = "ZMQ_")]
+	public enum SendRecvOption {
+		NOBLOCK,
+		SNDMORE
+	}
 }
