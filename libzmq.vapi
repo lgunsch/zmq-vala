@@ -124,4 +124,20 @@ namespace ZMQ {
 		NOBLOCK,
 		SNDMORE
 	}
+
+	[Compact]
+	[CCode (cprefix = "zmq_", cname = "void", free_function = "zmq_close")]
+	public class Socket {
+		/* how do we deal with errno return in constructor ? */
+		[CCode (cname = "zmq_socket")]
+		public Socket (Context context, SocketType type);
+		[CCode (simple_generics = true)]
+		public int setsockopt < T > (SocketOption option, T optval, size_t optvallen); 
+		[CCode (simple_generics = true)]
+		public int getsockopt < T > (SocketOption option, T optval, size_t optvallen);
+		public int bind (string addr);
+		public int connect (string addr);
+		public int send (MSG.Msg msg, SendRecvOption flags);
+		public int recv (MSG.Msg msg, SendRecvOption flags);
+	}
 }
