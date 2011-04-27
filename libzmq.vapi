@@ -65,10 +65,8 @@ namespace ZMQ {
 		public const uchar MORE;
 		public const uchar SHARED;
 
-		/* does not work correctly yet. Using GLib.Func for now.
-		 * [CCode (cname = "zmq_free_fn")]
-		 * public delegate void free_fn(u data, void* hint);
-		 */
+		[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
+		public delegate void free_fn(void *data); 
 
 		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
 		public struct Msg {
@@ -77,7 +75,7 @@ namespace ZMQ {
 			[CCode (cname = "zmq_msg_init_size")]
 			public Msg.size(size_t size);
 			[CCode (cname = "zmq_msg_init_data")]
-			public Msg.data(uint8[] data, GLib.Func? ffn = null);
+			public Msg.data(owned uint8[] data, free_fn?  ffn = null);
 		}
 
 		public int move(Msg dest, Msg src);
