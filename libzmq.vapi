@@ -65,7 +65,8 @@ namespace ZMQ {
 		public const uchar MORE;
 		public const uchar SHARED;
 
-		public delegate void free_fn(void* data, void* hint);
+		[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
+		public delegate void free_fn(void *data); 
 
 		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
 		public struct Msg {
@@ -74,7 +75,7 @@ namespace ZMQ {
 			[CCode (cname = "zmq_msg_init_size")]
 			public Msg.size(size_t size);
 			[CCode (cname = "zmq_msg_init_data")]
-			public Msg.data(void *data, size_t size, free_fn *ffn, void *hint);
+			public Msg.data(owned uint8[] data, free_fn?  ffn = null);
 		}
 
 		public int move(Msg dest, Msg src);
