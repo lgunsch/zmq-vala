@@ -1,0 +1,36 @@
+libzmq.vapi
+===========
+
+Overview
+--------
+
+This repository contains Vala language bindings for the ZeroMQ (ØMQ) library as
+well as examples to show its use.
+
+The ZeroMQ embedded networking library and concurrency framework:
+    <http://www.zeromq.org/>
+
+The Vala langeuage:
+    <http://live.gnome.org/Vala/>
+
+For bug reports, or enhancement requests:
+    <https://github.com/lgunsch/zmq-vala/issues>
+
+Usage
+-----
+
+To use libzmq.vapi simply include the 'using ZMQ;' statement at the top of your
+vala code and compile your application with '--pkg=libzmq' and the vapi in
+either the configured system vapidir or using the '--vapi-dir=/path/to/your/dir'
+option.
+
+Example:
+
+    valac --pkg=libzmq --vapidir=/path/to/vapi/dir mycode.vala
+
+Licensing
+---------
+
+Please see the file called COPYING.
+
+
