@@ -68,7 +68,7 @@ namespace ZMQ {
 		[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
 		public delegate void free_fn(void *data); 
 
-		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
+		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=false)]
 		public struct Msg {
 			[CCode (cname = "zmq_msg_init")]
 			public Msg();
@@ -76,6 +76,8 @@ namespace ZMQ {
 			public Msg.size(size_t size);
 			[CCode (cname = "zmq_msg_init_data")]
 			public Msg.data(owned uint8[] data, free_fn?  ffn = null);
+			[CCode (instance_pos = 2)]
+			public int copy(Msg? dest);
 		}
 
 		public int move(Msg dest, Msg src);
