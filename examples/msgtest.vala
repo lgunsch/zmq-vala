@@ -10,7 +10,7 @@ public static void testDataMsg() {
 	var msg = ZMQ.MSG.Msg.data ("Hello World".data, myFunction);	
 
 	MSG.Msg copy = MSG.Msg ();
-	int result =  msg.copy (copy);
+	int result =  msg.copy (ref copy);
 	stdout.printf ("Copy result is %d.\n", result);
 }
 
