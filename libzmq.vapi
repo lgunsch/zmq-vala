@@ -77,7 +77,7 @@ namespace ZMQ {
 			[CCode (cname = "zmq_msg_init_data")]
 			public Msg.data(owned uint8[] data, free_fn?  ffn = null);
 			[CCode (instance_pos = 2)]
-			public int copy(Msg? dest);
+			public int copy(Msg dest);
 		}
 
 		public int move(Msg dest, Msg src);
