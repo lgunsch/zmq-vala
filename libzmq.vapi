@@ -140,7 +140,7 @@ namespace ZMQ {
 		public int getsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		public int bind (string addr);
 		public int connect (string addr);
-		public int send (MSG.Msg msg, SendRecvOption flags);
-		public int recv (MSG.Msg msg, SendRecvOption flags);
+		public int send (MSG.Msg msg, SendRecvOption flags = 0);
+		public int recv (MSG.Msg msg, SendRecvOption flags = 0);
 	}
 }
