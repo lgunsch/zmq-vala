@@ -17,12 +17,12 @@ public static int main(string [] argv) {
 		var request = MSG.Msg ();
 		responder.recv(request, 0);
 		stdout.printf ("Received Hello!\n");
-		
+
 		//  Do some 'work'
 		Posix.sleep(1);
-		
+
 		// Send reply back to client
-		var reply = MSG.Msg.data("World".data);
+		var reply = MSG.Msg.with_data("World".data);
 		responder.send(reply, 0);
 	}
 }

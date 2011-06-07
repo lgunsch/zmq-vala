@@ -1,13 +1,13 @@
 using ZMQ;
 
-public static void myFunction(void* data) { 
+public static void myFunction(void* data) {
 	stdout.printf ("Freed!\n");
 	delete data;
 }
 
 public static void testDataMsg() {
 	/* buffered data message */
-	var msg = ZMQ.MSG.Msg.data ("Hello World".data, myFunction);	
+	var msg = ZMQ.MSG.Msg.with_data ("Hello World".data, myFunction);
 
 	MSG.Msg copy = MSG.Msg ();
 	int result =  msg.copy (ref copy);
