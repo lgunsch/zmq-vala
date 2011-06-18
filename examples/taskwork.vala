@@ -20,10 +20,8 @@ public static int main (string[] argv) {
 
 	// Process tasks forever
 	while (true) {
-		var msg = MSG.Msg ();
-		receiver.recv (msg);
+		var str = s_recv (receiver);
 		// Simple progress indicator for the viewer
-		var str = @"$(msg.data ())";
 		stdout.printf ("%s.", str);
 		stdout.flush ();
 
