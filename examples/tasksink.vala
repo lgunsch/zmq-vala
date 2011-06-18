@@ -29,6 +29,6 @@ public static int main (string[] argv) {
 		stdout.flush ();
 	}
 	// Calculate and report duration of batch
-	stdout.printf ("Total elapsed time: %d msec\n", (int)(timer.elapsed () * 1000000));
+	stdout.printf ("Total elapsed time: %d msec\n", (int)(timer.elapsed () * 1000));
 	return 0;
 }
