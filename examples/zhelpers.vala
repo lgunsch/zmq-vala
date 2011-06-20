@@ -10,9 +10,12 @@ namespace ZMQ {
 		if (socket.recv (msg) != 0) {
 			return null;
 		}
-		uint8[] data = new uint8[msg.size () + 1];
-		Memory.copy (data, msg.data (), data.length - 1);
-		data[data.length] = '\0';  
+
+		size_t size = msg.size () + 1;
+		uint8[] data = new uint8[size];
+		Memory.copy(data, msg.data (), size - 1);
+		data[size - 1] = '\0';
+
 		return (string)data;
 	}
 }
