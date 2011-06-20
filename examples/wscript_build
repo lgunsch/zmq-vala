@@ -1,0 +1,66 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'hwserver',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['hwserver.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'hwclient',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['hwclient.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'version',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['version.vala'],
+	vapi_dirs     = ['..']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'taskvent',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['taskvent.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'taskwork',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['zhelpers.vala', 'taskwork.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'tasksink',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['tasksink.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'wuserver',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['wuserver.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'wuclient',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['zhelpers.vala', 'wuclient.vala'],
+	vapi_dirs     = ['../']
+	)
