@@ -64,3 +64,11 @@ bld.program(
 	source        = ['zhelpers.vala', 'wuclient.vala'],
 	vapi_dirs     = ['../']
 	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'msreader',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['msreader.vala'],
+	vapi_dirs     = ['../']
+	)
