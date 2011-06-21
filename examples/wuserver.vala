@@ -16,7 +16,6 @@ public static int main(string[] args) {
 		//  Get values that will fool the boss
 		int zipcode, temperature, relhumidity;
 		zipcode = int_range (0, 100000);
-		zipcode = 10001;
 		temperature = int_range (-80, 135);
 		relhumidity = int_range (10, 60);
 
