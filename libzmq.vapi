@@ -39,7 +39,7 @@ namespace ZMQ {
 		[CCode (cname = "ZMQ_VERSION")]
 		public const int VERSION;
 	}
-	
+
 	public static void version (out int major, out int minor, out int patch);
 
 	/* ZMQ error numbers, in addition to POSIX error numbers. */
@@ -66,7 +66,7 @@ namespace ZMQ {
 		public const uchar SHARED;
 
 		[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
-		public delegate void free_fn (void *data); 
+		public delegate void free_fn (void *data);
 
 		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=false)]
 		public struct Msg {
@@ -79,7 +79,7 @@ namespace ZMQ {
 			[CCode (instance_pos = 2)]
 			public int copy (ref Msg dest);
 			public uint8 *data ();
-			public size_t size (); 
+			public size_t size ();
 		}
 
 		public int move (Msg dest, Msg src);
@@ -99,7 +99,7 @@ namespace ZMQ {
 		XPUB,
 		XSUB
 	}
-	
+
 	[CCode (cname = "int", cprefix = "ZMQ_")]
 	public enum SocketOption {
 		HWM,
@@ -137,7 +137,7 @@ namespace ZMQ {
 		[CCode (cname = "zmq_socket")]
 		public Socket (Context context, SocketType type);
 		[CCode (simple_generics = true)]
-		public int setsockopt < T > (SocketOption option, T optval, size_t optvallen); 
+		public int setsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		[CCode (simple_generics = true)]
 		public int getsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		public int bind (string addr);
@@ -145,4 +145,18 @@ namespace ZMQ {
 		public int send (MSG.Msg msg, SendRecvOption flags = 0);
 		public int recv (MSG.Msg msg, SendRecvOption flags = 0);
 	}
+
+	public const short POLLIN;
+	public const short POLLOUT;
+	public const short POLLERR;
+
+	[CCode (cname = "zmq_pollitem_t")]
+	public struct PollItem {
+		Socket *socket;
+		int fd;
+		short events;
+		short revents;
+	}
+
+	public int poll (PollItem[] items, long timeout);
 }
