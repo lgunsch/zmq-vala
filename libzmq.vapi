@@ -159,4 +159,13 @@ namespace ZMQ {
 	}
 
 	public int poll (PollItem[] items, long timeout);
+
+	[CCode (cname = "int", cprefix = "ZMQ_")]
+	public enum Device {
+		STREAMER,
+		FORWARDER,
+		QUEUE
+	}
+
+	int device (Device device, Socket insocket, Socket outsocket);
 }

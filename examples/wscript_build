@@ -80,3 +80,11 @@ bld.program(
 	source        = ['zhelpers.vala', 'mspoller.vala'],
 	vapi_dirs     = ['../']
 	)
+
+bld.program(
+	packages      = 'libzmq',
+	target        = 'msgqueue',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['msgqueue.vala'],
+	vapi_dirs     = ['../']
+	)
