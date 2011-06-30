@@ -1,6 +1,6 @@
 /* libzmq.vala
  *
- * Copyright (C) 2011  Lewis Gunsch <lgunsch@gmail.com>
+ * Copyright (C) 2011  Lewis Gunsch <lewis@gunsch.ca>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
