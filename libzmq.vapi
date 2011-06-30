@@ -18,7 +18,7 @@
 
  *
  * Author:
- *      Lewis Gunsch <lgunsch@gmail.com>
+ *      Lewis Gunsch <lewis@gunsch.ca>
  */
 
 [CCode (lower_case_cprefix = "zmq_", cheader_filename = "zmq.h")]
