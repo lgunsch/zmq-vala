@@ -1,9 +1,4 @@
 /build/*
 /.waf*
 /.lock-wafbuild
-/msgtest
-/examples/msgtest.c
-/hwserver
-/hwclient
-/examples/hwclient.c
-/examples/hwserver.c
+/examples/*.c
