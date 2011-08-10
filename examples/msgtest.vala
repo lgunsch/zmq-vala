@@ -1,20 +1,37 @@
 using ZMQ;
 
-public static void myFunction(void* data) {
+public static void my_free_function(void* data) {
 	stdout.printf ("Freed!\n");
 	delete data;
 }
 
-public static void testDataMsg() {
+public static void test_data_msg() {
 	/* buffered data message */
-	var msg = ZMQ.MSG.Msg.with_data ("Hello World".data, myFunction);
+	var msg = Msg.with_data ("Hello World".data, my_free_function);
+}
 
-	MSG.Msg copy = MSG.Msg ();
-	int result =  msg.copy (ref copy);
+public static void test_size_msg() {
+	/* test message with fixed size */
+	var msg = Msg.with_size (4);
+}
+
+public static void test_msg_copy() {
+	Msg msg = Msg();
+	Msg copy = Msg ();
+	int result = msg.copy (ref copy);
 	stdout.printf ("Copy result is %d.\n", result);
+} 
+
+public static void test_msg_move()  {
+	Msg src = new Msg ();
+	Msg dst = new Msg ();
+	dst.move (src);
 }
 
 public static int main(string[] argv) {
-	testDataMsg ();
+	test_data_msg ();
+	test_size_msg ();
+	test_msg_copy ();
+	test_msg_move ();
 	return 1;
 }
