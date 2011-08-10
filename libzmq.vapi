@@ -65,7 +65,7 @@ namespace ZMQ {
 	[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
 	public delegate void free_fn (void *data);
 
-	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=false)]
+	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
 	public struct Msg {
 		public const uchar MORE;
 		public const uchar SHARED;
@@ -81,7 +81,7 @@ namespace ZMQ {
 		public size_t size ();
 
 		[CCode (instance_pos = -1)]
-		public int move (owned Msg dest);
+		public int move (Msg dest);
 	}
 
 	[CCode (cname = "int", cprefix = "ZMQ_")]
@@ -141,8 +141,8 @@ namespace ZMQ {
 		public int getsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		public int bind (string addr);
 		public int connect (string addr);
-		public int send (Msg msg, SendRecvOption flags = 0);
-		public int recv (Msg msg, SendRecvOption flags = 0);
+		public int send (owned Msg msg, SendRecvOption flags = 0);
+		public int recv (ref Msg msg, SendRecvOption flags = 0);
 	}
 
 	public const short POLLIN;
