@@ -25,7 +25,7 @@ public static void test_msg_copy() {
 public static void test_msg_move()  {
 	Msg src = new Msg ();
 	Msg dst = new Msg ();
-	dst.move (src);
+	src.move (dst);
 }
 
 public static int main(string[] argv) {
