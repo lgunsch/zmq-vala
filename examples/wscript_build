@@ -3,6 +3,14 @@
 
 bld.program(
 	packages      = 'libzmq',
+	target        = 'msgtest',
+	uselib        = 'GTK GLIB ZMQ',
+	source        = ['msgtest.vala'],
+	vapi_dirs     = ['../']
+	)
+
+bld.program(
+	packages      = 'libzmq posix',
 	target        = 'hwserver',
 	uselib        = 'GTK GLIB ZMQ',
 	source        = ['hwserver.vala'],
@@ -17,74 +25,74 @@ bld.program(
 	vapi_dirs     = ['../']
 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'version',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['version.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'version',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['version.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'taskvent',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['taskvent.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'taskvent',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['taskvent.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'taskwork',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['zhelpers.vala', 'taskwork.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'taskwork',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['zhelpers.vala', 'taskwork.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'tasksink',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['tasksink.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'tasksink',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['tasksink.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'wuserver',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['wuserver.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'wuserver',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['wuserver.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'wuclient',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['zhelpers.vala', 'wuclient.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'wuclient',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['zhelpers.vala', 'wuclient.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'msreader',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['msreader.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'msreader',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['msreader.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'mspoller',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['zhelpers.vala', 'mspoller.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'mspoller',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['zhelpers.vala', 'mspoller.vala'],
+# 	vapi_dirs     = ['../']
+# 	)
 
-bld.program(
-	packages      = 'libzmq',
-	target        = 'msgqueue',
-	uselib        = 'GTK GLIB ZMQ',
-	source        = ['msgqueue.vala'],
-	vapi_dirs     = ['../']
-	)
+# bld.program(
+# 	packages      = 'libzmq',
+# 	target        = 'msgqueue',
+# 	uselib        = 'GTK GLIB ZMQ',
+# 	source        = ['msgqueue.vala'],
+# 	vapi_dirs     = ['../']
+# 	)

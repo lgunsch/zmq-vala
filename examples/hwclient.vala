@@ -14,12 +14,12 @@ public static int main(string [] argv) {
 	requester.connect ("tcp://localhost:5555");
 
 	for (int request_nbr = 0; request_nbr != 10; request_nbr++) {
-		var request = MSG.Msg.with_data ("Hello".data, null);
+		var request = Msg.with_data ("Hello".data, null);
 		stdout.printf ("Sending Hello %d…\n", request_nbr);
 		requester.send (request, 0);
 
-		var reply = MSG.Msg ();
-		requester.recv (reply, 0);
+		var reply = Msg ();
+		requester.recv (ref reply, 0);
 		stdout.printf ("Received World %d\n", request_nbr);
 	}
 
