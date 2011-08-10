@@ -55,34 +55,33 @@ namespace ZMQ {
 	public int errno ();
 	public unowned string strerror (int errnum);
 
-	namespace MSG {
-		[CCode (cname = "ZMQ_MAX_VSM_SIZE")]
-		public const int MAX_VSM_SIZE;
-		[CCode (cname = "ZMQ_DELIMITER")]
-		public const int DELIMITER;
-		[CCode (cname = "ZMQ_VSM")]
-		public const int VSM;
+	[CCode (cname = "ZMQ_MAX_VSM_SIZE")]
+	public const int MAX_VSM_SIZE;
+	[CCode (cname = "ZMQ_DELIMITER")]
+	public const int DELIMITER;
+	[CCode (cname = "ZMQ_VSM")]
+	public const int VSM;
+	
+	[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
+	public delegate void free_fn (void *data);
+
+	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=false)]
+	public struct Msg {
 		public const uchar MORE;
 		public const uchar SHARED;
+		[CCode (cname = "zmq_msg_init")]
+		public Msg ();
+		[CCode (cname = "zmq_msg_init_size")]
+		public Msg.with_size (size_t size);
+		[CCode (cname = "zmq_msg_init_data")]
+		public Msg.with_data (owned uint8[] data, free_fn? ffn = null);
+		[CCode (instance_pos = 2)]
+		public int copy (ref Msg dest);
+		public uint8 *data ();
+		public size_t size ();
 
-		[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
-		public delegate void free_fn (void *data);
-
-		[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=false)]
-		public struct Msg {
-			[CCode (cname = "zmq_msg_init")]
-			public Msg ();
-			[CCode (cname = "zmq_msg_init_size")]
-			public Msg.with_size (size_t size);
-			[CCode (cname = "zmq_msg_init_data")]
-			public Msg.with_data (owned uint8[] data, free_fn? ffn = null);
-			[CCode (instance_pos = 2)]
-			public int copy (ref Msg dest);
-			public uint8 *data ();
-			public size_t size ();
-		}
-
-		public int move (Msg dest, Msg src);
+		[CCode (instance_pos = -1)]
+		public int move (owned Msg src);
 	}
 
 	[CCode (cname = "int", cprefix = "ZMQ_")]
@@ -142,8 +141,8 @@ namespace ZMQ {
 		public int getsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		public int bind (string addr);
 		public int connect (string addr);
-		public int send (MSG.Msg msg, SendRecvOption flags = 0);
-		public int recv (MSG.Msg msg, SendRecvOption flags = 0);
+		public int send (Msg msg, SendRecvOption flags = 0);
+		public int recv (Msg msg, SendRecvOption flags = 0);
 	}
 
 	public const short POLLIN;
