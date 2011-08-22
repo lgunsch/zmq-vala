@@ -23,9 +23,11 @@ public static void test_msg_copy() {
 } 
 
 public static void test_msg_move()  {
-	Msg src = new Msg ();
-	Msg dst = new Msg ();
+    Msg src = Msg.with_data ("Hello".data);
+	stdout.printf("Message source size is %d.\n", (int)src.size ());
+	Msg dst = Msg ();
 	src.move (dst);
+	stdout.printf("Destination size is now %d.\n", (int)dst.size ());
 }
 
 public static int main(string[] argv) {

@@ -17,7 +17,7 @@ public static int main (string[] argv) {
 	stdout.printf ("Sending tasks to workers...\n");
 
 	//  The first message is "0" and signals start of batch
-	var msg = MSG.Msg.with_data ("0".data);
+	var msg = Msg.with_data ("0".data);
 	sender.send (msg);
 
 	// Send 100 tasks
@@ -27,7 +27,7 @@ public static int main (string[] argv) {
 		int workload = Random.int_range (1, 100);
 		total_msec += workload;
 		var str = @"$(workload)";
-		sender.send (MSG.Msg.with_data (str.data));
+		sender.send (Msg.with_data (str.data));
 	}
 	stdout.printf ("Total expected cost: %d msec\n", total_msec);
 	Thread.usleep (1000000);      // Give 0MQ time to deliver

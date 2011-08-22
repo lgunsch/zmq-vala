@@ -23,14 +23,16 @@ public static int main(string [] argv) {
 		//  Process any waiting tasks
 		int rc = 0;
 		do {
-			if ((rc = receiver.recv ( MSG.Msg (), SendRecvOption.NOBLOCK)) == 0) {
+			var task = Msg ();
+			if ((rc = receiver.recv (ref task, SendRecvOption.NOBLOCK)) == 0) {
 				//  process task
 			}
 		} while (rc == 0);
 
 		//  Process any waiting weather updates
 		do {
-			if ((rc = subscriber.recv ( MSG.Msg (), SendRecvOption.NOBLOCK)) == 0) {
+			var update = Msg ();
+			if ((rc = subscriber.recv (ref update, SendRecvOption.NOBLOCK)) == 0) {
 				//  process weather update
 			}
 		} while (rc == 0);

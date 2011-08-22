@@ -6,8 +6,8 @@ namespace ZMQ {
 	 *  Returns null if context is being terminated.
 	 */
 	public string? s_recv(Socket socket) {
-		var msg = MSG.Msg ();
-		if (socket.recv (msg) != 0) {
+		var msg = Msg ();
+		if (socket.recv (ref msg) != 0) {
 			return null;
 		}
 

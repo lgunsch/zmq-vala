@@ -24,12 +24,13 @@ public static int main(string [] argv) {
 	//  Process messages from both sockets
 	while (true) {
 		poll (items, -1);
+		var msg = Msg ();
 		if ((items[0].revents & POLLIN) != 0) {
-			receiver.recv (MSG.Msg ());
+			receiver.recv (ref msg);
 			//  Process task
 		}
 		if ((items[1].revents & POLLIN) != 0) {
-			subscriber.recv (MSG.Msg ());
+			subscriber.recv (ref msg);
 			//  Process weather update
 		}
 	}

@@ -22,7 +22,7 @@ public static int main(string[] args) {
 		//  Send message to all subscribers
 		string update = @"$(zipcode) $(temperature) $(relhumidity)";
 		stdout.printf("Sending: %s.\n", update);
-		var reply = MSG.Msg.with_data (update.data);
+		var reply = Msg.with_data (update.data);
 		publisher.send (reply);
 	}
 }

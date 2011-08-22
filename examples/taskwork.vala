@@ -29,6 +29,6 @@ public static int main (string[] argv) {
 		Thread.usleep (int.parse (str) * 100);
 
 		// Send results to sink
-		sender.send (MSG.Msg ());
+		sender.send (Msg ());
 	}
 }

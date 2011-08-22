@@ -12,8 +12,8 @@ public static int main (string[] argv) {
 	receiver.bind("tcp://*:5558");
 
 	// Wait for start of batch
-	var msg = MSG.Msg ();
-	receiver.recv (msg);
+	var msg = Msg ();
+	receiver.recv (ref msg);
 
 	// Start our clock now
 	var timer = new Timer ();
@@ -21,7 +21,8 @@ public static int main (string[] argv) {
 
 	// Process 100 confirmations
 	for (int task_nbr = 0; task_nbr < 100; task_nbr++) {
-		receiver.recv (MSG.Msg ());
+		var confirmation = Msg ();
+		receiver.recv (ref confirmation);
 		if ((task_nbr / 10) * 10 == task_nbr)
 			stdout.printf (":");
 		else
