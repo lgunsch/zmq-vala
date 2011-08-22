@@ -2,3 +2,5 @@
 /.waf*
 /.lock-wafbuild
 /examples/*.c
+/examples/*.vala~
+
