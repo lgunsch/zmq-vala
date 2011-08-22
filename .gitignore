@@ -4,3 +4,4 @@
 /examples/*.c
 /examples/*.vala~
 
+/.gitignore~
