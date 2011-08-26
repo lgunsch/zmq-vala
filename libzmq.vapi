@@ -145,19 +145,25 @@ namespace ZMQ {
 		public int recv (ref Msg msg, SendRecvOption flags = 0);
 	}
 
-	public const short POLLIN;
-	public const short POLLOUT;
-	public const short POLLERR;
+	namespace POLL {
+		[CCode (cname = "ZMQ_POLLIN")]
+		public const short IN;
+		[CCode (cname = "ZMQ_POLLOUT")]
+		public const short OUT;
+		[CCode (cname = "ZMQ_POLLERR")]
+		public const short ERR;
 
-	[CCode (cname = "zmq_pollitem_t")]
-	public struct PollItem {
-		Socket *socket;
-		int fd;
-		short events;
-		short revents;
+		[CCode (cname = "zmq_pollitem_t")]
+		public struct PollItem {
+			Socket *socket;
+			int fd;
+			short events;
+			short revents;
+		}
+
+		[CCode (cname = "zmq_poll")]
+		public int poll (PollItem[] items, long timeout);
 	}
-
-	public int poll (PollItem[] items, long timeout);
 
 	[CCode (cname = "int", cprefix = "ZMQ_")]
 	public enum Device {
