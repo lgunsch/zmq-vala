@@ -81,7 +81,7 @@ namespace ZMQ {
 		public size_t size ();
 
 		[CCode (instance_pos = -1)]
-		public int move (Msg dest);
+		public int move (ref Msg dest);
 	}
 
 	[CCode (cname = "int", cprefix = "ZMQ_")]
