@@ -65,7 +65,7 @@ namespace ZMQ {
 	[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
 	public delegate void free_fn (void *data);
 
-	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", has_copy_function=true)]
+	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", copy_function = "")]
 	public struct Msg {
 		public const uchar MORE;
 		public const uchar SHARED;
