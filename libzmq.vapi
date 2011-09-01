@@ -77,9 +77,16 @@ namespace ZMQ {
 		public Msg.with_data (owned uint8[] data, free_fn? ffn = null);
 		[CCode (instance_pos = -1)]
 		public int copy (ref Msg dest);
-		public uint8 *data ();
+		[CCode (cname = "zmq_msg_data")]
+		private uint8 *_data ();
 		public size_t size ();
-
+		public uint8[] data {
+			get {
+				unowned uint8[] data = (uint8[]) this._data ();
+				data.length = (int) this.size ();
+				return data;
+			}
+		}
 		[CCode (instance_pos = -1)]
 		public int move (ref Msg dest);
 	}
