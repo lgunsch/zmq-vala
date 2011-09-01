@@ -13,7 +13,7 @@ namespace ZMQ {
 
 		size_t size = msg.size () + 1;
 		uint8[] data = new uint8[size];
-		Memory.copy(data, msg.data (), size - 1);
+		Memory.copy(data, msg.data, size - 1);
 		data[size - 1] = '\0';
 
 		return (string)data;
