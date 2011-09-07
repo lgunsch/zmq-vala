@@ -10,7 +10,7 @@ public static int main(string [] argv) {
 
 	// Socket to talk to server
 	stdout.printf ("Connecting to hello world server…\n");
-	var requester = new Socket (context, SocketType.REQ);
+	var requester = Socket.create (context, SocketType.REQ);
 	requester.connect ("tcp://localhost:5555");
 
 	for (int request_nbr = 0; request_nbr != 10; request_nbr++) {

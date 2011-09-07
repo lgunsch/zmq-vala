@@ -11,7 +11,7 @@ public static int main(string[] args) {
 	
 	//  Socket to talk to server
 	stdout.printf ("Collecting updates from weather server...\n");
-	var subscriber = new Socket (context, SocketType.SUB);
+	var subscriber = Socket.create (context, SocketType.SUB);
 	subscriber.connect ("tcp://localhost:5556");
 
 	//  Subscribe to zipcode, default is NYC, 10001

@@ -9,7 +9,7 @@ public static int main (string[] argv) {
 	var context = new Context(1);
 
 	// Socket to send messages on
-	var sender = new Socket (context, SocketType.PUSH);
+	var sender = Socket.create (context, SocketType.PUSH);
 	sender.bind ("tcp://*:5557");
 
 	stdout.printf ("Press Enter when the workers are ready: ");

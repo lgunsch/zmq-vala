@@ -9,7 +9,7 @@ using Random;
 public static int main(string[] args) {
 	//  Prepare our context and publisher
 	var context = new Context (1);
-	var publisher = new Socket (context, SocketType.PUB);
+	var publisher = Socket.create (context, SocketType.PUB);
 	publisher.bind ("tcp://*:5556");
 
 	while (true) {

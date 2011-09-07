@@ -8,7 +8,7 @@ using ZMQ;
 public static int main (string[] argv) {
 	// Prepare our context and socket
 	var context = new Context (1);
-	var receiver = new Socket (context, SocketType.PULL);
+	var receiver = Socket.create (context, SocketType.PULL);
 	receiver.bind("tcp://*:5558");
 
 	// Wait for start of batch

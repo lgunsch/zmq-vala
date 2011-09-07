@@ -9,7 +9,7 @@ public static int main(string [] argv) {
 	var context = new Context (1);
 
 	// Socket to talk to clients
-	var responder = new Socket (context, SocketType.REP);
+	var responder = Socket.create (context, SocketType.REP);
 	responder.bind ("tcp://*:5555");
 
 	while (true) {

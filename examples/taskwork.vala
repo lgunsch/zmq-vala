@@ -11,11 +11,11 @@ public static int main (string[] argv) {
 	var context = new Context (1);
 
 	// Socket to receive messages on
-	var receiver = new Socket (context, SocketType.PULL);
+	var receiver = Socket.create (context, SocketType.PULL);
 	receiver.connect ("tcp://localhost:5557");
 
 	// Socket to send messages to
-	var sender = new Socket (context, SocketType.PUSH);
+	var sender = Socket.create (context, SocketType.PUSH);
 	sender.connect ("tcp://localhost:5558");
 
 	// Process tasks forever

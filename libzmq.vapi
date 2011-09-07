@@ -139,9 +139,8 @@ namespace ZMQ {
 	[Compact]
 	[CCode (cprefix = "zmq_", cname = "void", free_function = "zmq_close")]
 	public class Socket {
-		/* how do we deal with errno return in constructor ? */
 		[CCode (cname = "zmq_socket")]
-		public Socket (Context context, SocketType type);
+		public static Socket? create(Context context, SocketType type);
 		[CCode (simple_generics = true)]
 		public int setsockopt < T > (SocketOption option, T optval, size_t optvallen);
 		[CCode (simple_generics = true)]

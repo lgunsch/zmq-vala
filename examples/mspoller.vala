@@ -8,11 +8,11 @@ public static int main(string [] argv) {
 	var context = new Context (1);
 
 	//  Connect to task ventilator
-	var receiver = new Socket (context, SocketType.PULL);
+	var receiver = Socket.create (context, SocketType.PULL);
 	receiver.connect ("tcp://localhost:5557");
 
 	//  Connect to weather server
-	var subscriber = new Socket (context, SocketType.SUB);
+	var subscriber = Socket.create (context, SocketType.SUB);
 	subscriber.connect ("tcp://localhost:5556");
 	subscriber.setsockopt (SocketOption.SUBSCRIBE, "10001 ", 6);
 
