@@ -176,8 +176,8 @@ namespace ZMQ {
 	public enum Device {
 		STREAMER,
 		FORWARDER,
-		QUEUE
+		QUEUE;
+		[CCode (cname = "zmq_device")]
+		public int device (Socket insocket, Socket outsocket);
 	}
-
-	int device (Device device, Socket insocket, Socket outsocket);
 }

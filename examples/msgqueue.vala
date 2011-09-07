@@ -16,7 +16,7 @@ public static int main(string [] argv) {
     backend.bind ("tcp://*:5560");
 
     //  Start built-in device
-    device (Device.QUEUE, frontend, backend);
+    Device.QUEUE.device (frontend, backend);
 
 	return 0;
 }
