@@ -61,11 +61,11 @@ namespace ZMQ {
 	public const int DELIMITER;
 	[CCode (cname = "ZMQ_VSM")]
 	public const int VSM;
-	
+
 	[CCode (cname = "zmq_free_fn", type = "void (*)(void *, void *)")]
 	public delegate void free_fn (void *data);
 
-	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", copy_function = "")]
+	[CCode (cprefix = "zmq_msg_", cname = "zmq_msg_t", destroy_function = "zmq_msg_close", copy_function = "NO_IMPLICIT_COPY")]
 	public struct Msg {
 		public const uchar MORE;
 		public const uchar SHARED;
@@ -75,8 +75,14 @@ namespace ZMQ {
 		public Msg.with_size (size_t size);
 		[CCode (cname = "zmq_msg_init_data")]
 		public Msg.with_data (owned uint8[] data, free_fn? ffn = null);
-		[CCode (instance_pos = -1)]
-		public int copy (ref Msg dest);
+		[CCode (cname = "zmq_msg_copy", instance_pos = -1)]
+		private int _copy (ref Msg dest);
+		[CCode (cname = "zmq_msg_copy_wrapper")]
+		public Msg copy () {
+			Msg msg = Msg ();
+			this._copy (ref msg);
+			return msg;
+		}
 		[CCode (cname = "zmq_msg_data")]
 		private uint8 *_data ();
 		public size_t size ();
