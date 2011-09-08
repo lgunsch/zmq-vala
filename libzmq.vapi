@@ -83,6 +83,12 @@ namespace ZMQ {
 			this._copy (ref msg);
 			return msg;
 		}
+		public Msg clone () {
+			unowned uint8[] data = (uint8[]) GLib.Memory.dup((void*) this._data (), (uint) this.size ());
+			data.length = (int) this.size ();
+			Msg copy = Msg.with_data (data);
+			return copy;
+		}
 		[CCode (cname = "zmq_msg_data")]
 		private uint8 *_data ();
 		public size_t size ();
