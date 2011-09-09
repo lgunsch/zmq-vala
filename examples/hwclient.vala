@@ -16,7 +16,7 @@ public static int main(string [] argv) {
 	for (int request_nbr = 0; request_nbr != 10; request_nbr++) {
 		var request = Msg.with_data ("Hello".data, null);
 		stdout.printf ("Sending Hello %d…\n", request_nbr);
-		requester.send (request, 0);
+		requester.send (ref request, 0);
 
 		var reply = Msg ();
 		requester.recv (ref reply, 0);

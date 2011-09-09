@@ -23,6 +23,6 @@ public static int main(string[] args) {
 		string update = @"$(zipcode) $(temperature) $(relhumidity)";
 		stdout.printf("Sending: %s.\n", update);
 		var reply = Msg.with_data (update.data);
-		publisher.send (reply);
+		publisher.send (ref reply);
 	}
 }

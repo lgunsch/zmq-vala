@@ -23,6 +23,6 @@ public static int main(string [] argv) {
 
 		// Send reply back to client
 		var reply = Msg.with_data ("World".data);
-		responder.send (reply, 0);
+		responder.send (ref reply, 0);
 	}
 }

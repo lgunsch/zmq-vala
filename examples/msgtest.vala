@@ -17,9 +17,7 @@ public static void test_size_msg() {
 
 public static void test_msg_copy() {
 	Msg msg = Msg();
-	Msg copy = Msg ();
-	int result = msg.copy (ref copy);
-	stdout.printf ("Copy result is %d.\n", result);
+	Msg copy = msg.copy ();
 } 
 
 public static void test_msg_move()  {
