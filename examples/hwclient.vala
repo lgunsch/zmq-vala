@@ -14,7 +14,7 @@ public static int main(string [] argv) {
 	requester.connect ("tcp://localhost:5555");
 
 	for (int request_nbr = 0; request_nbr != 10; request_nbr++) {
-		var request = Msg.with_data ("Hello".data, null);
+		var request = Msg.with_data ("Hello".data);
 		stdout.printf ("Sending Hello %d…\n", request_nbr);
 		requester.send (ref request, 0);
 

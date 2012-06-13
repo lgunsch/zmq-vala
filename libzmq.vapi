@@ -74,7 +74,7 @@ namespace ZMQ {
 		[CCode (cname = "zmq_msg_init_size")]
 		public Msg.with_size (size_t size);
 		[CCode (cname = "zmq_msg_init_data")]
-		public Msg.with_data (owned uint8[] data, free_fn? ffn = null);
+		public Msg.with_data (owned uint8[] data, free_fn? ffn = GLib.free);
 		[CCode (cname = "zmq_msg_copy", instance_pos = -1)]
 		private int _copy (ref Msg dest);
 		[CCode (cname = "zmq_msg_copy_wrapper")]
