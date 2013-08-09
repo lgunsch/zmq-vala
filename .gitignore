@@ -1,7 +1,7 @@
-/build/*
-/.waf*
-/.lock-wafbuild
-/examples/*.c
-/examples/*.vala~
+*.swp
+*.*~
 
-/.gitignore~
+build/*
+.waf*
+.lock-wafbuild
+examples/*.c
