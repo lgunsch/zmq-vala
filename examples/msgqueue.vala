@@ -5,7 +5,7 @@
 using ZMQ;
 
 public static int main(string [] argv) {
-    var context = new Context (1);
+    var context = new Context ();
 
     //  Socket facing clients
     var frontend = Socket.create (context, SocketType.ROUTER);
@@ -18,6 +18,6 @@ public static int main(string [] argv) {
     //  Start built-in device
     Device.QUEUE.device (frontend, backend);
 
-	return 0;
+    return 0;
 }
 

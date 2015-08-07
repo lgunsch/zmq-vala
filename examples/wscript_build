@@ -61,7 +61,7 @@ bld.program(
 	packages      = 'libzmq',
 	target        = 'wuserver',
 	uselib        = 'GTK GLIB ZMQ',
-	source        = ['wuserver.vala'],
+	source        = ['zhelpers.vala', 'wuserver.vala'],
 	vapi_dirs     = ['../']
 	)
 

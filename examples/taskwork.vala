@@ -8,28 +8,28 @@
 using ZMQ;
 
 public static int main (string[] argv) {
-	var context = new Context (1);
+    var context = new Context ();
 
-	// Socket to receive messages on
-	var receiver = Socket.create (context, SocketType.PULL);
-	receiver.connect ("tcp://localhost:5557");
+    // Socket to receive messages on
+    var receiver = Socket.create (context, SocketType.PULL);
+    receiver.connect ("tcp://localhost:5557");
 
-	// Socket to send messages to
-	var sender = Socket.create (context, SocketType.PUSH);
-	sender.connect ("tcp://localhost:5558");
+    // Socket to send messages to
+    var sender = Socket.create (context, SocketType.PUSH);
+    sender.connect ("tcp://localhost:5558");
 
-	// Process tasks forever
-	while (true) {
-		var str = s_recv (receiver);
-		// Simple progress indicator for the viewer
-		stdout.printf ("%s.", str);
-		stdout.flush ();
+    // Process tasks forever
+    while (true) {
+        var str = s_recv (receiver);
+        // Simple progress indicator for the viewer
+        stdout.printf ("%s.", str);
+        stdout.flush ();
 
-		// Do the work
-		Thread.usleep (int.parse (str) * 100);
+        // Do the work
+        Thread.usleep (int.parse (str) * 100);
 
-		// Send results to sink
-		var msg = Msg ();
-		sender.send (ref msg);
-	}
+        // Send results to sink
+        var msg = Msg ();
+        msg.send (sender);
+    }
 }
